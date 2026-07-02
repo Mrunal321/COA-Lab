@@ -225,30 +225,6 @@ All Verilog source files, testbenches, and the handout are available in the lab 
 Students should open this repository on their systems during the lab session to access the complete set of files.
 \end{notebox}
 
-% ---------------------------------------------------------
-\section{Three-Hour Lab Plan}
-
-\begin{center}
-\renewcommand{\arraystretch}{1.25}
-\begin{tabular}{p{3cm}p{10cm}}
-\toprule
-\textbf{Time} & \textbf{Activity} \\
-\midrule
-0:00--0:15 & Introduction to processor datapath blocks and Verilog basics \\
-0:15--0:45 & Experiment 1: Half adder and full adder implementation \\
-0:45--1:20 & Experiment 2: 4-bit ripple carry adder implementation \\
-1:20--1:55 & Experiment 3: 4-bit multiplier implementation \\
-1:55--2:35 & Experiment 4: Gate-level 4-bit ALU implementation \\
-2:35--2:50 & Review of Verilog files, testbench inputs, and expected results \\
-2:50--3:00 & Discussion, viva questions, and mini-assignment \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\begin{notebox}
-This lab is designed as a single self-contained handout. The same PDF can be projected during the session and shared with participants for hands-on implementation.
-\end{notebox}
-
 \begin{conceptbox}{Suggested Presentation Flow}
 \begin{enumerate}[leftmargin=*]
     \item Explain why adders, multipliers, and ALUs are basic datapath blocks.
@@ -583,10 +559,6 @@ end
 endmodule
 \end{lstlisting}
 
-\begin{notebox}
-In this lab, the multiplication operator \texttt{*} is used to keep the implementation simple within the 3-hour session. Internally, hardware multiplication can be implemented using partial products, shift operations, and adders.
-\end{notebox}
-
 \begin{exercisebox}
 As an extension, implement a 4-bit array multiplier using AND gates for partial products and adders for summation.
 \end{exercisebox}
@@ -809,7 +781,7 @@ Complete any two of the unimplemented ALU opcode slots 100--111. You may choose 
 \end{exercisebox}
 
 % ---------------------------------------------------------
-\section{Viva and Discussion Questions}
+\section{Discussion Questions}
 
 \begin{enumerate}[leftmargin=*]
     \item Why is a full adder required in multi-bit addition?
@@ -821,25 +793,5 @@ Complete any two of the unimplemented ALU opcode slots 100--111. You may choose 
     \item How is the zero flag useful in processor design?
     \item How can the ALU be extended for a real processor datapath?
 \end{enumerate}
-
-% ---------------------------------------------------------
-\section{Conclusion}
-
-In this lab, participants implemented basic arithmetic and logic blocks used in processor datapaths. The lab started with half adder and full adder circuits, extended them to a 4-bit ripple carry adder, introduced multiplier design, and finally integrated multiple operations into a 4-bit ALU. These blocks form the foundation of arithmetic and logic execution inside a processor.
-
-\vspace{0.5cm}
-
-\begin{center}
-\begin{tcolorbox}[
-    colback=IITLightBlue,
-    colframe=IITBlue,
-    width=0.85\textwidth,
-    arc=2mm,
-    boxrule=1pt
-]
-\centering
-\Large \textbf{End of Lab}
-\end{tcolorbox}
-\end{center}
 
 \end{document}
