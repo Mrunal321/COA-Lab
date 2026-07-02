@@ -26,10 +26,6 @@ initial begin
     opcode = 3'b001; #10;
     opcode = 3'b010; #10;
     opcode = 3'b011; #10;
-    opcode = 3'b100; #10;
-    opcode = 3'b101; #10;
-    opcode = 3'b110; #10;
-    opcode = 3'b111; #10;
 
     a = 4'd15;
     b = 4'd1;

@@ -33,19 +33,11 @@ wire sel_add;
 wire sel_sub;
 wire sel_and;
 wire sel_or;
-wire sel_xor;
-wire sel_not;
-wire sel_shl;
-wire sel_shr;
 
 wire [3:0] add_result;
 wire [3:0] sub_result;
 wire [3:0] and_result;
 wire [3:0] or_result;
-wire [3:0] xor_result;
-wire [3:0] not_result;
-wire [3:0] shl_result;
-wire [3:0] shr_result;
 
 wire add_c1;
 wire add_c2;
@@ -66,10 +58,6 @@ assign sel_add = op2_not & op1_not & op0_not;
 assign sel_sub = op2_not & op1_not & opcode[0];
 assign sel_and = op2_not & opcode[1] & op0_not;
 assign sel_or  = op2_not & opcode[1] & opcode[0];
-assign sel_xor = opcode[2] & op1_not & op0_not;
-assign sel_not = opcode[2] & op1_not & opcode[0];
-assign sel_shl = opcode[2] & opcode[1] & op0_not;
-assign sel_shr = opcode[2] & opcode[1] & opcode[0];
 
 alu_full_adder add0(a[0], b[0], 1'b0,   add_result[0], add_c1);
 alu_full_adder add1(a[1], b[1], add_c1, add_result[1], add_c2);
@@ -86,28 +74,13 @@ assign sub_borrow = ~sub_cout;
 assign and_result = a & b;
 assign or_result  = a | b;
 
-assign xor_result[0] = (~a[0] & b[0]) | (a[0] & ~b[0]);
-assign xor_result[1] = (~a[1] & b[1]) | (a[1] & ~b[1]);
-assign xor_result[2] = (~a[2] & b[2]) | (a[2] & ~b[2]);
-assign xor_result[3] = (~a[3] & b[3]) | (a[3] & ~b[3]);
-
-assign not_result = ~a;
-assign shl_result = {a[2:0], 1'b0};
-assign shr_result = {1'b0, a[3:1]};
-
 assign result = ({4{sel_add}} & add_result) |
                 ({4{sel_sub}} & sub_result) |
                 ({4{sel_and}} & and_result) |
-                ({4{sel_or}}  & or_result)  |
-                ({4{sel_xor}} & xor_result) |
-                ({4{sel_not}} & not_result) |
-                ({4{sel_shl}} & shl_result) |
-                ({4{sel_shr}} & shr_result);
+                ({4{sel_or}}  & or_result);
 
 assign carry = (sel_add & add_cout) |
-               (sel_sub & sub_borrow) |
-               (sel_shl & a[3]) |
-               (sel_shr & a[0]);
+               (sel_sub & sub_borrow);
 
 assign zero = ~(result[0] | result[1] | result[2] | result[3]);
 
